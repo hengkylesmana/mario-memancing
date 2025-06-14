@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #87CEEB; /* Sky blue background */
+    font-family: 'Press Start 2P', cursive; /* A pixel-art style font would be good here, but not included by default */
+}
+
+#game-container {
+    width: 900px;
+    height: 600px;
+    border: 5px solid #5C4033;
+    background: linear-gradient(to bottom, #87CEEB 50%, #4682B4 50%); /* Sky and water */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#start-screen h1, #end-screen h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px #FFD700;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #FF4500;
+    color: white;
+    border: 3px solid #B22222;
+    border-radius: 8px;
+    box-shadow: 4px 4px #8B0000;
+    transition: transform 0.1s ease-in-out;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px #8B0000;
+}
+
+#mario {
+    position: absolute;
+    bottom: 250px; /* Position Mario on the boat */
+    left: 100px;
+    width: 80px;
+    height: auto;
+    z-index: 10;
+}
+
+#boat {
+    position: absolute;
+    bottom: 200px; /* Position boat slightly above water level */
+    left: 50px;
+    width: 250px;
+    height: auto;
+    z-index: 9;
+}
+
+#water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #00008B; /* Dark blue for water */
+    border-top: 5px solid #0000CD;
+}
+
+#fishing-line-container {
+    position: absolute;
+    top: 150px; /* Adjust based on Mario's hand position */
+    left: 160px; /* Adjust based on Mario's hand position */
+    width: 2px;
+    height: 0px; /* Initial height for hidden line */
+    overflow: hidden;
+    transform-origin: top;
+    z-index: 8;
+}
+
+#fishing-line {
+    width: 100%;
+    height: 100%;
+    background-color: #A9A9A9; /* Grey for fishing line */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#fishing-hook {
+    position: absolute;
+    bottom: 0;
+    left: -10px; /* Adjust to center with line */
+    width: 20px;
+    height: 20px;
+    display: none; /* Hidden by default */
+}
+
+.fish {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: swim 10s linear infinite;
+    z-index: 7;
+}
+
+.fish.caught {
+    animation: none; /* Stop swimming animation when caught */
+}
+
+@keyframes swim {
+    0% { transform: translateX(900px); }
+    100% { transform: translateX(-100px); }
+}
+
+/* Specific fish styles - you can add more images and classes */
+.fish-1 { background-image: url('ikan1.png'); /* Example fish image */ }
+.fish-2 { background-image: url('https://i.imgur.com/7sLpY0p.png'); /* Another example fish image */ }
+.fish-3 { background-image: url('https://i.imgur.com/B9B5o6p.png'); /* Yet another example fish image */ }
+
+
+#score-board, #round-info {
+    position: absolute;
+    top: 20px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1em;
+    z-index: 20;
+}
+
+#score-board {
+    left: 20px;
+}
+
+#round-info {
+    right: 20px;
+}
+
+#cast-button, #reel-button {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1em;
+    padding: 10px 20px;
+    z-index: 20;
+}
+
+#cast-button {
+    left: 20px;
+}
+
+#reel-button {
+    right: 20px;
+    display: none; /* Hidden until line is cast */
+}
+
+#message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    display: none;
+    z-index: 100;
+}
+
+/* Optional: Add a custom font for a retro feel.
+   You would link this in your HTML <head> from Google Fonts or similar.
+   Example:
+   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*/

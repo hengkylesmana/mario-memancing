@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Fishing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen" class="screen active">
+            <h1>Mario Bros Sedang Memancing Ikan</h1>
+            <button id="play-button">Play</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <img id="mario" src="mario.png" alt="Mario">
+            <img id="boat" src="perahu.png" alt="Boat">
+            <div id="water"></div>
+            <div id="fishing-line-container">
+                <div id="fishing-line"></div>
+                <img id="fishing-hook" src="https://i.imgur.com/tFp5g2O.png" alt="Hook">
+            </div>
+            <div id="score-board">Score: <span id="current-score">0</span></div>
+            <div id="round-info">Round: <span id="current-round">1</span>/3</div>
+            <button id="cast-button">Lempar Pancing</button>
+            <button id="reel-button">Tarik Pancing</button>
+            <div id="message"></div>
+        </div>
+
+        <div id="end-screen" class="screen">
+            <h1>Game Over!</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-button">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
